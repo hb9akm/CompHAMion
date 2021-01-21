@@ -1,0 +1,7 @@
+section.relais.search {
+    padding: 10px;
+}
+section.relais.search input {
+    box-sizing: border-box;
+    width: 100%;
+}

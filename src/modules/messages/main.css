@@ -1,0 +1,32 @@
+#message {
+    display: none;
+    position: absolute;
+    top: 3em;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    padding: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+}
+
+#message.show {
+    display: block;
+}
+
+.error {
+    background-color: red;
+}
+
+.warning {
+    background-color: orange;
+}
+
+.info {
+    background-color: blue;
+}
+
+.success {
+    background-color: green;
+}
