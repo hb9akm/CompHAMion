@@ -38,7 +38,25 @@ hb9akm.geo = {
             String.fromCharCode(65 + subSquareIndexLat);
     },
     locator2lonLat: function(locator) {
-        // This returns the middle point of the square
+        const fieldIndexLon = locator.charCodeAt(0) - 65;
+        const fieldIndexLat = locator.charCodeAt(1) - 65;
+        const squareIndexLon = locator[2];
+        const squareIndexLat = locator[3];
+        const subSquareIndexLon = locator.charCodeAt(4) - 65;
+        const subSquareIndexLat = locator.charCodeAt(5) - 65;
+        var lon = (subSquareIndexLon / 12) + (1/24);
+        lon += squareIndexLon * 2;
+        console.log(lon);
+        lon += fieldIndexLon * 20;
+        lon -= 180;
+        var lat = (subSquareIndexLat / 24) + (1/48);
+        lat += squareIndexLat * 1;
+        lat += fieldIndexLat * 10;
+        lat -= 90;
+        return [
+            lon,
+            lat
+        ]
     }
 }
 

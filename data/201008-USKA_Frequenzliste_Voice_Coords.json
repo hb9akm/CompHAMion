@@ -68,8 +68,8 @@
     "Alt.": "1201m",
     "Remarks": "C4FM* FM T71.9",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.3125,
+    "lon": 8.9583333
   },
   {
     "QRG TX": 144.575,
@@ -80,8 +80,8 @@
     "Alt.": "668m",
     "Remarks": "FM T71.9 2m>70cm",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.5625,
+    "lon": 8.9583333
   },
   {
     "QRG TX": 144.825,
@@ -92,8 +92,8 @@
     "Alt.": "390m",
     "Remarks": "EL#235967",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.4791667,
+    "lon": 7.625
   },
   {
     "QRG TX": 144.825,
@@ -176,8 +176,8 @@
     "Alt.": "980m",
     "Remarks": "C4FM #31157 (ID HB9HFV)",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.5625,
+    "lon": 9.0416667
   },
   {
     "QRG TX": 144.925,
@@ -200,8 +200,8 @@
     "Alt.": "1241m",
     "Remarks": "FM 1750 Echo 30s",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.1041667,
+    "lon": 6.7916667
   },
   {
     "QRG TX": 145.2375,
@@ -224,8 +224,8 @@
     "Alt.": "759m",
     "Remarks": "NFM T71.9",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.4791667,
+    "lon": 7.625
   },
   {
     "QRG TX": 145.2875,
@@ -236,8 +236,8 @@
     "Alt.": "426m",
     "Remarks": "EL#929173 NFM T71.9",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.6875,
+    "lon": 7.875
   },
   {
     "QRG TX": 145.3375,
@@ -260,8 +260,8 @@
     "Alt.": "993m",
     "Remarks": "D-STAR*",
     "Status": 2,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.4791667,
+    "lon": 7.2083333
   },
   {
     "QRG TX": 145.3375,
@@ -308,8 +308,8 @@
     "Alt.": "1031m",
     "Remarks": "NFM T103.6 <>Tamaro",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.3541667,
+    "lon": 9.0416667
   },
   {
     "QRG TX": 145.5875,
@@ -320,8 +320,8 @@
     "Alt.": "773m",
     "Remarks": "D-STAR CCS#95023",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.4791667,
+    "lon": 9.0416667
   },
   {
     "QRG TX": 145.5875,
@@ -332,8 +332,8 @@
     "Alt.": "986m",
     "Remarks": "SIMPLEX NOT IARU CONFORM",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.0625,
+    "lon": 6.7916667
   },
   {
     "QRG TX": 145.5875,
@@ -380,8 +380,8 @@
     "Alt.": "624m",
     "Remarks": "EL#908271 NFM T71.9",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.0625,
+    "lon": 8.375
   },
   {
     "QRG TX": 145.6,
@@ -452,8 +452,8 @@
     "Alt.": "2123m",
     "Remarks": "NFM T103.5",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.2708333,
+    "lon": 7.875
   },
   {
     "QRG TX": 145.625,
@@ -488,8 +488,8 @@
     "Alt.": "864m",
     "Remarks": "C4FM #18814",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 45.9791667,
+    "lon": 8.9583333
   },
   {
     "QRG TX": 145.625,
@@ -548,8 +548,8 @@
     "Alt.": "2806m",
     "Remarks": "C4FM #28878 NFM T141.3",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.8125,
+    "lon": 9.7916667
   },
   {
     "QRG TX": 145.6625,
@@ -560,8 +560,8 @@
     "Alt.": "644m",
     "Remarks": "D-STAR CCS#48003",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.3125,
+    "lon": 7.9583333
   },
   {
     "QRG TX": 145.6875,
@@ -632,8 +632,8 @@
     "Alt.": "1628m",
     "Remarks": "NFM \"G",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.4375,
+    "lon": 6.125
   },
   {
     "QRG TX": 145.725,
@@ -680,8 +680,8 @@
     "Alt.": "513m",
     "Remarks": "NFM T77.0",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.3958333,
+    "lon": 8.5416667
   },
   {
     "QRG TX": 145.7375,
@@ -692,8 +692,8 @@
     "Alt.": "785m",
     "Remarks": "D-STAR* CCS#20603",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.6041667,
+    "lon": 7.0416667
   },
   {
     "QRG TX": 145.75,
@@ -776,8 +776,8 @@
     "Alt.": "1615m",
     "Remarks": "NFM carrier",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.0208333,
+    "lon": 7.7916667
   },
   {
     "QRG TX": 145.775,
@@ -812,8 +812,8 @@
     "Alt.": "1662m",
     "Remarks": "DMR-B #228126 CC1",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.4375,
+    "lon": 7.0416667
   },
   {
     "QRG TX": 145.7875,
@@ -836,8 +836,8 @@
     "Alt.": "668m",
     "Remarks": "FM T71.9 70cm>2m",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.5625,
+    "lon": 8.9583333
   },
   {
     "QRG TX": 432.7375,
@@ -848,8 +848,8 @@
     "Alt.": "785m",
     "Remarks": "D-STAR*",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.6041667,
+    "lon": 7.0416667
   },
   {
     "QRG TX": 432.75,
@@ -908,8 +908,8 @@
     "Alt.": "480m",
     "Remarks": "C4FM #17263",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.2291667,
+    "lon": 8.9583333
   },
   {
     "QRG TX": 438.15,
@@ -1028,8 +1028,8 @@
     "Alt.": "767m",
     "Remarks": "DMR-I #228901 CC2 SWISS",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.3958333,
+    "lon": 9.375
   },
   {
     "QRG TX": 438.225,
@@ -1076,8 +1076,8 @@
     "Alt.": "1201m",
     "Remarks": "C4FM* NFM T67.0",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.3125,
+    "lon": 8.9583333
   },
   {
     "QRG TX": 438.25,
@@ -1292,8 +1292,8 @@
     "Alt.": "1035m",
     "Remarks": "DMR* #228307",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.8125,
+    "lon": 7.7083333
   },
   {
     "QRG TX": 438.325,
@@ -1472,8 +1472,8 @@
     "Alt.": "939m",
     "Remarks": "C4FM #17119 NFM T71.9",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.0208333,
+    "lon": 8.2083333
   },
   {
     "QRG TX": 438.4,
@@ -1544,8 +1544,8 @@
     "Alt.": "967m",
     "Remarks": "DMR-B #228605 CC1",
     "Status": 2,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 45.8958333,
+    "lon": 9.0416667
   },
   {
     "QRG TX": 438.4375,
@@ -1592,8 +1592,8 @@
     "Alt.": "1872m",
     "Remarks": "DMR-B #228619 CC2",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.3125,
+    "lon": 8.625
   },
   {
     "QRG TX": 438.45,
@@ -1628,8 +1628,8 @@
     "Alt.": "644m",
     "Remarks": "DMR-B #228403 CC2",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.3125,
+    "lon": 7.9583333
   },
   {
     "QRG TX": 438.45,
@@ -1796,8 +1796,8 @@
     "Alt.": "356m",
     "Remarks": "C4FM #31707 NFM T74.4",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.3958333,
+    "lon": 8.2916667
   },
   {
     "QRG TX": 438.4875,
@@ -1856,8 +1856,8 @@
     "Alt.": "1613m",
     "Remarks": "DMR-B #228607 CC1",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.4375,
+    "lon": 9.2083333
   },
   {
     "QRG TX": 438.5125,
@@ -1880,8 +1880,8 @@
     "Alt.": "1098m",
     "Remarks": "DMR-B #228202 CC1 MM",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.0625,
+    "lon": 6.7916667
   },
   {
     "QRG TX": 438.55,
@@ -1940,8 +1940,8 @@
     "Alt.": "352m",
     "Remarks": "DMR-B #228401 CC1",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.5208333,
+    "lon": 7.625
   },
   {
     "QRG TX": 438.575,
@@ -2000,8 +2000,8 @@
     "Alt.": "1035m",
     "Remarks": "C4FM #17549 DCS023",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.8125,
+    "lon": 7.7083333
   },
   {
     "QRG TX": 438.625,
@@ -2048,8 +2048,8 @@
     "Alt.": "1701m",
     "Remarks": "EL#66814 +C4FM*",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.1041667,
+    "lon": 7.0416667
   },
   {
     "QRG TX": 438.6625,
@@ -2108,8 +2108,8 @@
     "Alt.": "2123m",
     "Remarks": "EL#68050 FM T103.5",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.2708333,
+    "lon": 7.875
   },
   {
     "QRG TX": 438.675,
@@ -2132,8 +2132,8 @@
     "Alt.": "767m",
     "Remarks": "D-STAR* CCS#90062",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.3958333,
+    "lon": 9.375
   },
   {
     "QRG TX": 438.675,
@@ -2144,8 +2144,8 @@
     "Alt.": "450m",
     "Remarks": "DMR-I #228905 CC1 SWISS",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.4791667,
+    "lon": 8.7083333
   },
   {
     "QRG TX": 438.7,
@@ -2192,8 +2192,8 @@
     "Alt.": "785m",
     "Remarks": "DMR-I #228105 CC1 FRANCE",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.6041667,
+    "lon": 7.0416667
   },
   {
     "QRG TX": 438.75,
@@ -2216,8 +2216,8 @@
     "Alt.": "701m",
     "Remarks": "FM 1750Hz",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.4791667,
+    "lon": 7.7916667
   },
   {
     "QRG TX": 438.775,
@@ -2252,8 +2252,8 @@
     "Alt.": "2120m",
     "Remarks": "EL#40107 FM T71.9 \"P",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.9791667,
+    "lon": 8.2916667
   },
   {
     "QRG TX": 438.825,
@@ -2288,8 +2288,8 @@
     "Alt.": "624m",
     "Remarks": "FM T71.9",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.0625,
+    "lon": 8.375
   },
   {
     "QRG TX": 438.925,
@@ -2312,8 +2312,8 @@
     "Alt.": "771m",
     "Remarks": "FM T71.9",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.4791667,
+    "lon": 9.0416667
   },
   {
     "QRG TX": 438.95,
@@ -2372,8 +2372,8 @@
     "Alt.": "513m",
     "Remarks": "DMR-I #228804 CC5 SWISS",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.3958333,
+    "lon": 8.5416667
   },
   {
     "QRG TX": 439.025,
@@ -2408,8 +2408,8 @@
     "Alt.": "515m",
     "Remarks": "FM 1750Hz",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.7291667,
+    "lon": 8.7083333
   },
   {
     "QRG TX": 439.025,
@@ -2444,8 +2444,8 @@
     "Alt.": "656m",
     "Remarks": "C4FM #31830 FM T94.8",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.7708333,
+    "lon": 7.5416667
   },
   {
     "QRG TX": 439.05,
@@ -2480,8 +2480,8 @@
     "Alt.": "744m",
     "Remarks": "C4FM #18814 T1750",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.1875,
+    "lon": 9.0416667
   },
   {
     "QRG TX": 439.05,
@@ -2504,8 +2504,8 @@
     "Alt.": "1375m",
     "Remarks": "FM T88.5",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.2291667,
+    "lon": 7.375
   },
   {
     "QRG TX": 439.075,
@@ -2552,8 +2552,8 @@
     "Alt.": "352m",
     "Remarks": "FM T71.9",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.5208333,
+    "lon": 7.5416667
   },
   {
     "QRG TX": 439.125,
@@ -2600,8 +2600,8 @@
     "Alt.": "644m",
     "Remarks": "EL#612317 FM T71.9",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.3125,
+    "lon": 7.9583333
   },
   {
     "QRG TX": 439.15,
@@ -2636,8 +2636,8 @@
     "Alt.": "1026m",
     "Remarks": "C4FM #31927 FM T100.0",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.8958333,
+    "lon": 7.7916667
   },
   {
     "QRG TX": 439.2,
@@ -2696,8 +2696,8 @@
     "Alt.": "799m",
     "Remarks": "EL#6879 FM T71.9",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.0625,
+    "lon": 7.9583333
   },
   {
     "QRG TX": 439.25,
@@ -2708,8 +2708,8 @@
     "Alt.": "1436m",
     "Remarks": "DMR-B #228118 CC2",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.2291667,
+    "lon": 7.0416667
   },
   {
     "QRG TX": 439.275,
@@ -2768,8 +2768,8 @@
     "Alt.": "513m",
     "Remarks": "APCO-P25 NAC$293 FM T77.0",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.3958333,
+    "lon": 8.5416667
   },
   {
     "QRG TX": 439.325,
@@ -2780,8 +2780,8 @@
     "Alt.": "759m",
     "Remarks": "FM T71.9 1750Hz I *70/71",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.4791667,
+    "lon": 7.625
   },
   {
     "QRG TX": 439.3375,
@@ -2792,8 +2792,8 @@
     "Alt.": "1662m",
     "Remarks": "SIMPLEX NOT IARU CONFORM",
     "Status": 2,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.4375,
+    "lon": 7.0416667
   },
   {
     "QRG TX": 439.35,
@@ -2804,8 +2804,8 @@
     "Alt.": "2806m",
     "Remarks": "EL#83400 NF T141.3",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.8125,
+    "lon": 9.7916667
   },
   {
     "QRG TX": 439.35,
@@ -2840,8 +2840,8 @@
     "Alt.": "823m",
     "Remarks": "EL#41140 T71.9 <>Mollis",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.3541667,
+    "lon": 8.4583333
   },
   {
     "QRG TX": 439.4,
@@ -3152,8 +3152,8 @@
     "Alt.": "1618m",
     "Remarks": "DMR-B #228315 CC3",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.0208333,
+    "lon": 7.7916667
   },
   {
     "QRG TX": 439.5125,
@@ -3260,8 +3260,8 @@
     "Alt.": "1883m",
     "Remarks": "D-STAR HB9H_B",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.4375,
+    "lon": 9.2083333
   },
   {
     "QRG TX": 439.5625,
@@ -3296,8 +3296,8 @@
     "Alt.": "1714m",
     "Remarks": "DMR-B #228706 CC2",
     "Status": 2,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.5208333,
+    "lon": 9.2916667
   },
   {
     "QRG TX": 439.5625,
@@ -3332,8 +3332,8 @@
     "Alt.": "569m",
     "Remarks": "C4FM #34083 NFM T91.5",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.3958333,
+    "lon": 8.5416667
   },
   {
     "QRG TX": 439.575,
@@ -3368,8 +3368,8 @@
     "Alt.": "2123m",
     "Remarks": "DMR-B #228313 CC3",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.2708333,
+    "lon": 7.875
   },
   {
     "QRG TX": 439.5875,
@@ -3404,8 +3404,8 @@
     "Alt.": "0m",
     "Remarks": "DMR. project 2020",
     "Status": 0,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.9375,
+    "lon": 8.125
   },
   {
     "QRG TX": 439.6625,
@@ -3416,8 +3416,8 @@
     "Alt.": "1662m",
     "Remarks": "DMR !NOT IARU CONFORM!",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 46.4375,
+    "lon": 7.0416667
   },
   {
     "QRG TX": 1258.15,
@@ -3428,8 +3428,8 @@
     "Alt.": "644m",
     "Remarks": "FM Carrier 3s",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.3125,
+    "lon": 7.9583333
   },
   {
     "QRG TX": 1258.3,
@@ -3488,8 +3488,8 @@
     "Alt.": "625m",
     "Remarks": "FM Carrier",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.7291667,
+    "lon": 8.7083333
   },
   {
     "QRG TX": 1260.3,
@@ -3536,8 +3536,8 @@
     "Alt.": "1141m",
     "Remarks": "FM Carrier",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.4375,
+    "lon": 9.4583333
   },
   {
     "QRG TX": 1298.275,
@@ -3572,8 +3572,8 @@
     "Alt.": "362m",
     "Remarks": "FM",
     "Status": 1,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.5208333,
+    "lon": 7.5416667
   },
   {
     "QRG TX": 1298.7,
@@ -3584,7 +3584,7 @@
     "Alt.": "1205m",
     "Remarks": "FM (qrv 07/2019)",
     "Status": 0,
-    "lat": "NULL",
-    "lon": "NULL"
+    "lat": 47.3125,
+    "lon": 8.9583333
   }
 ]
