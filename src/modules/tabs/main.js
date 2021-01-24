@@ -1,5 +1,6 @@
 hb9akm.tabs = {
     _onload: function() {
+        hb9akm.pages = {};
         document.querySelectorAll("header nav a").forEach(function(el, index) {
             el.addEventListener("click", hb9akm.tabs.switchTab, false)
         });
@@ -29,18 +30,50 @@ hb9akm.tabs = {
     },
     loadedPages: {},
     switchTab: function() {
+        document.querySelectorAll("#content section").forEach(function(el, index) {
+            el.style.display = "none";
+        });
+
         const pageName = this.href.split("#")[1];
+        document.querySelectorAll("header nav a").forEach(function(el, index) {
+            el.classList.remove("active");
+        });
+
         if (hb9akm.tabs.loadedPages[pageName] != undefined) {
-            document.querySelector("#content").innerHTML = hb9akm.tabs.loadedPages[pageName];
+            document.querySelector('header nav a[href="#' + pageName + '"]').classList.add("active");
+            //document.querySelector("#content").innerHTML = hb9akm.tabs.loadedPages[pageName];
+            document.querySelectorAll("#content section." + pageName).forEach(function(el, index) {
+                el.style.display = "block";
+            });
+
+            if (hb9akm.pages[pageName] && hb9akm.pages[pageName].load != undefined) {
+                hb9akm.pages[pageName].load(false);
+            }
             return;
         }
-        hb9akm.tabs._getAjax(
+
+        this.classList.add("active");
+        hb9akm.ajax.get(
             "pages/" + pageName + "/main.html",
             function(xhr) {
+                const callback = function() {
+                    if (hb9akm.pages[pageName] && hb9akm.pages[pageName].load != undefined) {
+                        hb9akm.pages[pageName].load(true);
+                    }
+                }
                 const script = document.createElement("script");
                 script.src = "pages/" + pageName + "/main.js";
+                script.onreadystatechange = callback;
+                script.onload = callback;
                 document.head.appendChild(script);
-                document.querySelector("#content").innerHTML = xhr.responseText;
+                if (document.querySelector("#content section")) {
+                    document.querySelector("#content section").insertAdjacentHTML(
+                        "afterend",
+                        xhr.responseText
+                    );
+                } else {
+                    document.querySelector("#content").innerHTML = xhr.responseText;
+                }
                 const style = document.createElement("link");
                 style.href = "pages/" + pageName + "/main.css";
                 style.type = "text/css";
@@ -49,7 +82,6 @@ hb9akm.tabs = {
                 hb9akm.tabs.loadedPages[pageName] = xhr.responseText;
             },
             function(xhr) {
-                console.log('Error: ' + xhr.status); // An error occurred during the request.
                 hb9akm.messages.error(xhr.status);
             }
         );

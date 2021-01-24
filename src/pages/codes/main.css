@@ -1,0 +1,38 @@
+section.codes {
+    padding: 10px;
+}
+section.codes.search input {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+section.codes.list ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+section.codes.list ul li {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: white;
+    min-height: 50px;
+    padding: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+section.codes.list ul li span {
+    display: inline-block;
+}
+section.codes.list ul li span.title {
+    font-weight: bold;
+    margin-right: 20px;
+
+    /* todo: this does not work */
+    vertical-align: middle;
+    height: 100%;
+}
+

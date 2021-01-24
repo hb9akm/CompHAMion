@@ -1,0 +1,11 @@
+section.maps.search {
+    padding: 10px;
+}
+section.maps.search input {
+    box-sizing: border-box;
+    width: 100%;
+}
+section.maps.canvas {
+    padding: 10px;
+    height: calc(100% - 100px);
+}

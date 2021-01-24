@@ -1,7 +1,74 @@
-section.relais.search {
+section.relais {
     padding: 10px;
 }
 section.relais.search input {
     box-sizing: border-box;
     width: 100%;
+}
+
+section.relais.list ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: table;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: -10px;
+}
+
+section.relais.list ul li {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: white;
+    height: 50px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: table-row;
+}
+section.relais.list ul li span {
+    display: table-cell;
+    border-style: solid;
+    border-width: 0;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-color: gray;
+    text-align: right;
+    padding: 5px;
+}
+section.relais.list ul li span:first-child {
+    border-left-width: 1px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+section.relais.list ul li span:last-child {
+    border-right-width: 1px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+section.relais.list ul li span.title {
+    font-weight: bold;
+    margin-right: 20px;
+    text-align: left;
+    vertical-align: middle;
+}
+@media screen and (max-width: 600px) {
+    section.relais.list ul {
+        display: block;
+    }
+    section.relais.list ul li {
+        display: block;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 5px;
+        border-color: gray;
+        min-height: 50px;
+        height: auto;
+    }
+    section.relais.list ul li span,
+    section.relais.list ul li span:first-child,
+    section.relais.list ul li span:last-child {
+        display: inline-block;
+        border-width: 0;
+    }
 }
