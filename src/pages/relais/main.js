@@ -59,7 +59,6 @@ hb9akm.pages.relais = {
             );
             return;
         }
-        hb9akm.pages.relais.refreshTable();
     },
     calculateDistance(pointA, pointB) {
         var lat1 = pointA[1];
