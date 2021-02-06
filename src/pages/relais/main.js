@@ -28,7 +28,7 @@ hb9akm.pages.relais = {
     load: function(initial) {
         if (initial) {
             hb9akm.ajax.get(
-                "/api/v1/repeater/",
+                "https://api.hb9akm.ch/v1/repeater",
                 function(xhr) {
                     hb9akm.pages.relais.relais = JSON.parse(xhr.responseText);
                     console.log(hb9akm.pages.relais.relais[0]);
@@ -72,15 +72,15 @@ hb9akm.pages.relais = {
         hb9akm.geo.getCurrentLonLat(function(currentLonLat) {
             // add computed props
             relais.forEach(function(el, index) {
-                if (el.lon == "NULL") {
+                if (el.longitude == "NULL") {
                     relais[index].distance = 9999;
                     return;
                 }
                 relais[index].distance = hb9akm.pages.relais.calculateDistance(
                     currentLonLat,
                     [
-                        el.lon,
-                        el.lat
+                        el.longitude,
+                        el.latitude
                     ]
                 );
             });
@@ -88,7 +88,7 @@ hb9akm.pages.relais = {
             // filter
             relais = relais.filter(function(el) {
                 return document.querySelector(
-                    'section.relais.filter input[id="band_' + formatBand(getBand(el["QRG TX"])) + '"]:checked'
+                    'section.relais.filter input[id="band_' + formatBand(getBand(el.qrgTx)) + '"]:checked'
                 );
             });
 
@@ -101,25 +101,25 @@ hb9akm.pages.relais = {
 
             const list = document.querySelector("section.relais.list ul");
             relais.forEach(function(el, index) {
-                if (el.Status != 1) {
+                if (el.status != "qrv") {
                     return;
                 }
                 const repeater = document.createElement("li");
-                addSpan(repeater, "title", el.QTH);
-                addSpan(repeater, "band", formatBand(getBand(el["QRG TX"])));
-                addSpan(repeater, "locator", el.Locator);
+                addSpan(repeater, "title", el.qthName);
+                addSpan(repeater, "band", formatBand(getBand(el.qrgTx)));
+                addSpan(repeater, "locator", el.qthLocator);
                 addSpan(repeater, "locator2", hb9akm.geo.lonLat2Locator([
-                    el.lon,
-                    el.lat
+                    el.longitude,
+                    el.latitude
                 ]));
                 addSpan(repeater, "distance", "&#8960; " + el.distance + "km");
                 addSpan(
                     repeater,
                     "freq",
-                    "TX&#402;: " + el["QRG TX"] + " MHz<br>" +
-                    "&Delta;RX&#402;: " + (el["QRG TX"] - el["QRG RX"]).toFixed(2) + " MHz"
+                    "TX&#402;: " + el.qrgTx + " MHz<br>" +
+                    "&Delta;RX&#402;: " + (el.qrgTx - el.qrgRx).toFixed(2) + " MHz"
                 );
-                addSpan(repeater, "remarks", el.Remarks);
+                addSpan(repeater, "remarks", el.remarks);
                 list.append(repeater);
             });
         });

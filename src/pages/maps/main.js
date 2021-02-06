@@ -20,7 +20,7 @@ hb9akm.pages.maps =  {
             }
         );
         hb9akm.ajax.get(
-            "/api/v1/repeater/",
+            "https://api.hb9akm.ch/v1/repeater",
             function(xhr) {
                 hb9akm.pages.maps.relais = JSON.parse(xhr.responseText);
             },
@@ -49,10 +49,10 @@ hb9akm.pages.maps =  {
         hb9akm.pages.maps.relais.forEach(function(el) {
             relaisPositions.push(new ol.Feature({
                 geometry: new ol.geom.Point(ol.proj.fromLonLat([
-                    el.lon,
-                    el.lat
+                    el.longitude,
+                    el.latitude
                 ])),
-                name: el.QTH
+                name: el.qthName
             }));
         });
         const layer = new ol.layer.Vector({
