@@ -100,8 +100,30 @@ hb9akm.pages.relais = {
         });
 
         // filter
+        var selectedModes = [];
+        document.querySelectorAll('section.relais.filter input.mode').forEach(function(el) {
+            if (!el.checked) {
+                return;
+            }
+            selectedModes.push(el.id.substr(5).toUpperCase());
+        });
+        var selectedTypes = [];
+        document.querySelectorAll('section.relais.filter input.typ').forEach(function(el) {
+            if (!el.checked) {
+                return;
+            }
+            selectedTypes.push(el.id.substr(5).toLowerCase());
+        });
         relais = relais.filter(function(el) {
-            return document.querySelector(
+            var found = false;
+            el.modes.every(function(mode) {
+                if (selectedModes.indexOf(mode.type) != -1) {
+                    found = true;
+                    return false;
+                }
+                return true;
+            });
+            return found && selectedTypes.indexOf(el.type) != -1 && document.querySelector(
                 'section.relais.filter input[id="band_' + formatBand(getBand(el.qrgTx)) + '"]:checked'
             );
         });
