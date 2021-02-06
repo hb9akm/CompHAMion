@@ -24,15 +24,15 @@ function addSpan(par, cls, text) {
     //span.append(document.createTextNode(text));
     par.append(span);
 }
-hb9akm.pages.relais = {
+hb9akm.pages.repeater = {
     load: function(initial) {
         if (initial) {
             hb9akm.geo.registerCurrentLocationChangeListener(function(currentLocation) {
-                document.querySelector("section.relais.search input").value = hb9akm.geo.lonLat2Locator(currentLocation);
-                document.querySelector("section.relais.list ul").innerHTML = "";
-                hb9akm.pages.relais.refreshTable();
+                document.querySelector("section.repeater.search input").value = hb9akm.geo.lonLat2Locator(currentLocation);
+                document.querySelector("section.repeater.list ul").innerHTML = "";
+                hb9akm.pages.repeater.refreshTable();
             });
-            document.querySelector("section.relais.search input").addEventListener("keyup", function(ev) {
+            document.querySelector("section.repeater.search input").addEventListener("keyup", function(ev) {
                 if (ev.key != "Enter") {
                     return;
                 }
@@ -41,16 +41,16 @@ hb9akm.pages.relais = {
             hb9akm.ajax.get(
                 "https://api.hb9akm.ch/v1/repeater",
                 function(xhr) {
-                    hb9akm.pages.relais.relais = JSON.parse(xhr.responseText);
+                    hb9akm.pages.repeater.repeater = JSON.parse(xhr.responseText);
 
-                    document.querySelectorAll("section.relais.filter input").forEach(function(el, index) {
+                    document.querySelectorAll("section.repeater.filter input").forEach(function(el, index) {
                         el.addEventListener("change", function() {
-                            document.querySelector("section.relais.list ul").innerHTML = "";
-                            hb9akm.pages.relais.refreshTable();
+                            document.querySelector("section.repeater.list ul").innerHTML = "";
+                            hb9akm.pages.repeater.refreshTable();
                         });
                     });
                     hb9akm.geo.getCurrentLonLat(function(currentLonLat) {
-                        hb9akm.pages.relais.refreshTable();
+                        hb9akm.pages.repeater.refreshTable();
                     });
                 },
                 function(xhr) {
@@ -78,18 +78,18 @@ hb9akm.pages.relais = {
         return d.toFixed(1);
     },
     refreshTable: function() {
-        var relais = hb9akm.pages.relais.relais;
+        var repeater = hb9akm.pages.repeater.repeater;
 
         const currentLonLat = hb9akm.geo.currentLonLat;
 
-        document.querySelector("section.relais.search input").value = hb9akm.geo.lonLat2Locator(currentLonLat);
+        document.querySelector("section.repeater.search input").value = hb9akm.geo.lonLat2Locator(currentLonLat);
         // add computed props
-        relais.forEach(function(el, index) {
+        repeater.forEach(function(el, index) {
             if (el.longitude == "NULL") {
-                relais[index].distance = 9999;
+                repeater[index].distance = 9999;
                 return;
             }
-            relais[index].distance = hb9akm.pages.relais.calculateDistance(
+            repeater[index].distance = hb9akm.pages.repeater.calculateDistance(
                 currentLonLat,
                 [
                     el.longitude,
@@ -100,20 +100,20 @@ hb9akm.pages.relais = {
 
         // filter
         var selectedModes = [];
-        document.querySelectorAll('section.relais.filter input.mode').forEach(function(el) {
+        document.querySelectorAll('section.repeater.filter input.mode').forEach(function(el) {
             if (!el.checked) {
                 return;
             }
             selectedModes.push(el.id.substr(5).toUpperCase());
         });
         var selectedTypes = [];
-        document.querySelectorAll('section.relais.filter input.typ').forEach(function(el) {
+        document.querySelectorAll('section.repeater.filter input.typ').forEach(function(el) {
             if (!el.checked) {
                 return;
             }
             selectedTypes.push(el.id.substr(5).toLowerCase());
         });
-        relais = relais.filter(function(el) {
+        repeater = repeater.filter(function(el) {
             var found = false;
             el.modes.every(function(mode) {
                 if (selectedModes.indexOf(mode.type) != -1) {
@@ -123,17 +123,17 @@ hb9akm.pages.relais = {
                 return true;
             });
             return found && selectedTypes.indexOf(el.type) != -1 && document.querySelector(
-                'section.relais.filter input[id="band_' + formatBand(getBand(el.qrgTx)) + '"]:checked'
+                'section.repeater.filter input[id="band_' + formatBand(getBand(el.qrgTx)) + '"]:checked'
             );
         });
 
         // sort by distance
-        relais = relais.sort(function(a, b) {
+        repeater = repeater.sort(function(a, b) {
             return a.distance - b.distance;
         });
 
-        const list = document.querySelector("section.relais.list ul");
-        relais.forEach(function(el, index) {
+        const list = document.querySelector("section.repeater.list ul");
+        repeater.forEach(function(el, index) {
             if (el.status != "qrv") {
                 return;
             }

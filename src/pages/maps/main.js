@@ -15,7 +15,7 @@ hb9akm.pages.maps =  {
                             hb9akm.ajax.get(
                                 "https://api.hb9akm.ch/v1/repeater",
                                 function(xhr) {
-                                    hb9akm.pages.maps.relais = JSON.parse(xhr.responseText);
+                                    hb9akm.pages.maps.repeater = JSON.parse(xhr.responseText);
                                     hb9akm.pages.maps.loc = coords;
                                     hb9akm.pages.maps.init();
                                 },
@@ -59,12 +59,12 @@ hb9akm.pages.maps =  {
         });
 
 
-        var relaisPositions = []
-        hb9akm.pages.maps.relais.forEach(function(el, idx) {
+        var repeaterPositions = []
+        hb9akm.pages.maps.repeater.forEach(function(el, idx) {
             if (el.status != "qrv") {
                 return;
             }
-            relaisPositions.push(new ol.Feature({
+            repeaterPositions.push(new ol.Feature({
                 geometry: new ol.geom.Point(ol.proj.fromLonLat([
                     el.longitude,
                     el.latitude
@@ -75,7 +75,7 @@ hb9akm.pages.maps =  {
         });
         const layer = new ol.layer.Vector({
             source: new ol.source.Vector({
-                features: relaisPositions
+                features: repeaterPositions
             })
         });
         hb9akm.pages.maps.map.addLayer(layer);
@@ -108,7 +108,7 @@ hb9akm.pages.maps =  {
                 features.forEach(function(el, index) {
                     const myTemplate = repeaterTemplate.cloneNode(true);
                     myTemplate.classList.remove("template");
-                    const repeater = hb9akm.pages.maps.relais[el.values_.id];
+                    const repeater = hb9akm.pages.maps.repeater[el.values_.id];
                     myTemplate.querySelector(".name").innerHTML = repeater.qthName;
                     myTemplate.querySelector(".modes").innerHTML = repeater.modes.map(function(el) { return el.type; }).join(", ");
                     myTemplate.querySelector(".freq").innerHTML = repeater.qrgTx;
