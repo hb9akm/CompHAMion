@@ -42,7 +42,6 @@ hb9akm.pages.relais = {
                 "https://api.hb9akm.ch/v1/repeater",
                 function(xhr) {
                     hb9akm.pages.relais.relais = JSON.parse(xhr.responseText);
-                    console.log(hb9akm.pages.relais.relais[0]);
 
                     document.querySelectorAll("section.relais.filter input").forEach(function(el, index) {
                         el.addEventListener("change", function() {
@@ -108,10 +107,8 @@ hb9akm.pages.relais = {
         });
 
         // sort by distance
-        // todo: calculate distance
         relais = relais.sort(function(a, b) {
             return a.distance - b.distance;
-            return getBand(a["QRG TX"]) - getBand(b["QRG TX"]);
         });
 
         const list = document.querySelector("section.relais.list ul");
