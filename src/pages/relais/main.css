@@ -26,7 +26,7 @@ section.relais.list ul li {
     margin-bottom: 10px;
     display: table-row;
 }
-section.relais.list ul li span {
+section.relais.list ul li>span {
     display: table-cell;
     border-style: solid;
     border-width: 0;
@@ -36,17 +36,17 @@ section.relais.list ul li span {
     text-align: right;
     padding: 5px;
 }
-section.relais.list ul li span:first-child {
+section.relais.list ul li>span:first-child {
     border-left-width: 1px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
-section.relais.list ul li span:last-child {
+section.relais.list ul li>span:last-child {
     border-right-width: 1px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-section.relais.list ul li span.title {
+section.relais.list ul li>span.title {
     font-weight: bold;
     margin-right: 20px;
     text-align: left;
@@ -65,9 +65,9 @@ section.relais.list ul li span.title {
         min-height: 50px;
         height: auto;
     }
-    section.relais.list ul li span,
-    section.relais.list ul li span:first-child,
-    section.relais.list ul li span:last-child {
+    section.relais.list ul li>span,
+    section.relais.list ul li>span:first-child,
+    section.relais.list ul li>span:last-child {
         display: inline-block;
         border-width: 0;
     }

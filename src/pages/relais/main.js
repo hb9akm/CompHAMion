@@ -151,7 +151,7 @@ hb9akm.pages.relais = {
                 repeater,
                 "freq",
                 "TX&#402;: " + el.qrgTx + " MHz<br>" +
-                "&Delta;RX&#402;: " + (el.qrgTx - el.qrgRx).toFixed(2) + " MHz"
+                "<span title=\"" + el.qrgRx + "MHz\">&Delta;RX&#402;: " + (el.qrgTx - el.qrgRx).toFixed(2) + " MHz</span>"
             );
             addSpan(repeater, "remarks", el.remarks);
             list.append(repeater);
