@@ -5,20 +5,53 @@ hb9akm.geo = {
     _init: true,
     currentLonLat: [37.41, 8.82],
     getCurrentLonLat(callback, noCache) {
+        console.log("get current location");
         if (!navigator.geolocation) {
+            console.log("no navigator");
+            hb9akm.geo._triggerCurrentLocationChange();
             return hb9akm.geo.currentLonLat;
         }
         if (!noCache && !hb9akm.geo._init) {
+            console.log("from cache");
+            hb9akm.geo._triggerCurrentLocationChange();
             return callback(hb9akm.geo.currentLonLat);
         }
-        navigator.geolocation.getCurrentPosition(function(coords) {
-            hb9akm.geo.currentLonLat = [
-                coords.coords.longitude,
-                coords.coords.latitude
-            ];
-            callback(hb9akm.geo.currentLonLat);
-            hb9akm.geo._init = false;
-        });
+        console.log("getting position");
+        navigator.geolocation.getCurrentPosition(
+            function(coords) {
+                console.log("position get");
+                hb9akm.geo.currentLonLat = [
+                    coords.coords.longitude,
+                    coords.coords.latitude
+                ];
+                hb9akm.geo._triggerCurrentLocationChange();
+                callback(hb9akm.geo.currentLonLat);
+                hb9akm.geo._init = false;
+            },
+            function(error) {
+                console.log("error, falling back to iplocation");
+                hb9akm.ajax.get(
+                    "https://ipinfo.io/geo",
+                    function(xhr) {
+                        const loc = JSON.parse(xhr.responseText).loc.split(',');
+                        hb9akm.geo.currentLonLat = [
+                            +(loc[1]),
+                            +(loc[0])
+                        ];
+                        console.log("success");
+                        hb9akm.geo._triggerCurrentLocationChange();
+                        hb9akm.geo._init = false;
+                        return callback(hb9akm.geo.currentLonLat);
+                    },
+                    function(xhr) {
+                        console.log("error, use fallback");
+                        hb9akm.geo._triggerCurrentLocationChange();
+                        hb9akm.geo._init = false;
+                        return callback(hb9akm.geo.currentLonLat);
+                    }
+                );
+            }
+        );
     },
     lonLat2Locator: function(lonlat) {
         var lon = lonlat[0] + 180;
