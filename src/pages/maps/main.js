@@ -28,9 +28,26 @@ hb9akm.pages.maps =  {
                 hb9akm.messages.error(xhr.status);
             }
         );
+        hb9akm.geo.registerCurrentLocationChangeListener(function(currentLocation) {
+            document.querySelector("section.maps.search input").value = hb9akm.geo.lonLat2Locator(currentLocation);
+            if (!hb9akm.pages.maps.mapview) {
+                return;
+            }
+            hb9akm.pages.maps.mapview.setCenter(ol.proj.fromLonLat(currentLocation));
+            hb9akm.pages.maps.mapview.setZoom(9);
+        });
+        document.querySelector("section.maps.search input").addEventListener("keyup", function(ev) {
+            if (ev.key != "Enter") {
+                return;
+            }
+            hb9akm.geo.changeToFuzzyFind(ev.target.value);
+        });
     },
     init: function() {
-        console.log('here');
+        hb9akm.pages.maps.mapview = new ol.View({
+            center: ol.proj.fromLonLat(hb9akm.pages.maps.loc),
+            zoom: 9
+        });
         hb9akm.pages.maps.map = new ol.Map({
             target: 'map',
             layers: [
@@ -38,10 +55,7 @@ hb9akm.pages.maps =  {
                     source: new ol.source.OSM()
                 })
             ],
-            view: new ol.View({
-                center: ol.proj.fromLonLat(hb9akm.pages.maps.loc),
-                zoom: 9
-            })
+            view: hb9akm.pages.maps.mapview
         });
 
 

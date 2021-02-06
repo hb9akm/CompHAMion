@@ -27,6 +27,17 @@ function addSpan(par, cls, text) {
 hb9akm.pages.relais = {
     load: function(initial) {
         if (initial) {
+            hb9akm.geo.registerCurrentLocationChangeListener(function(currentLocation) {
+                document.querySelector("section.relais.search input").value = hb9akm.geo.lonLat2Locator(currentLocation);
+                document.querySelector("section.relais.list ul").innerHTML = "";
+                hb9akm.pages.relais.refreshTable();
+            });
+            document.querySelector("section.relais.search input").addEventListener("keyup", function(ev) {
+                if (ev.key != "Enter") {
+                    return;
+                }
+                hb9akm.geo.changeToFuzzyFind(ev.target.value);
+            });
             hb9akm.ajax.get(
                 "https://api.hb9akm.ch/v1/repeater",
                 function(xhr) {
@@ -39,7 +50,9 @@ hb9akm.pages.relais = {
                             hb9akm.pages.relais.refreshTable();
                         });
                     });
-                    hb9akm.pages.relais.refreshTable();
+                    hb9akm.geo.getCurrentLonLat(function(currentLonLat) {
+                        hb9akm.pages.relais.refreshTable();
+                    });
                 },
                 function(xhr) {
                     hb9akm.messages.error(xhr.status);
@@ -69,59 +82,60 @@ hb9akm.pages.relais = {
     refreshTable: function() {
         var relais = hb9akm.pages.relais.relais;
 
-        hb9akm.geo.getCurrentLonLat(function(currentLonLat) {
-            // add computed props
-            relais.forEach(function(el, index) {
-                if (el.longitude == "NULL") {
-                    relais[index].distance = 9999;
-                    return;
-                }
-                relais[index].distance = hb9akm.pages.relais.calculateDistance(
-                    currentLonLat,
-                    [
-                        el.longitude,
-                        el.latitude
-                    ]
-                );
-            });
+        const currentLonLat = hb9akm.geo.currentLonLat;
 
-            // filter
-            relais = relais.filter(function(el) {
-                return document.querySelector(
-                    'section.relais.filter input[id="band_' + formatBand(getBand(el.qrgTx)) + '"]:checked'
-                );
-            });
-
-            // sort by distance
-            // todo: calculate distance
-            relais = relais.sort(function(a, b) {
-                return a.distance - b.distance;
-                return getBand(a["QRG TX"]) - getBand(b["QRG TX"]);
-            });
-
-            const list = document.querySelector("section.relais.list ul");
-            relais.forEach(function(el, index) {
-                if (el.status != "qrv") {
-                    return;
-                }
-                const repeater = document.createElement("li");
-                addSpan(repeater, "title", el.qthName);
-                addSpan(repeater, "band", formatBand(getBand(el.qrgTx)));
-                addSpan(repeater, "locator", el.qthLocator);
-                addSpan(repeater, "locator2", hb9akm.geo.lonLat2Locator([
+        document.querySelector("section.relais.search input").value = hb9akm.geo.lonLat2Locator(currentLonLat);
+        // add computed props
+        relais.forEach(function(el, index) {
+            if (el.longitude == "NULL") {
+                relais[index].distance = 9999;
+                return;
+            }
+            relais[index].distance = hb9akm.pages.relais.calculateDistance(
+                currentLonLat,
+                [
                     el.longitude,
                     el.latitude
-                ]));
-                addSpan(repeater, "distance", "&#8960; " + el.distance + "km");
-                addSpan(
-                    repeater,
-                    "freq",
-                    "TX&#402;: " + el.qrgTx + " MHz<br>" +
-                    "&Delta;RX&#402;: " + (el.qrgTx - el.qrgRx).toFixed(2) + " MHz"
-                );
-                addSpan(repeater, "remarks", el.remarks);
-                list.append(repeater);
-            });
+                ]
+            );
+        });
+
+        // filter
+        relais = relais.filter(function(el) {
+            return document.querySelector(
+                'section.relais.filter input[id="band_' + formatBand(getBand(el.qrgTx)) + '"]:checked'
+            );
+        });
+
+        // sort by distance
+        // todo: calculate distance
+        relais = relais.sort(function(a, b) {
+            return a.distance - b.distance;
+            return getBand(a["QRG TX"]) - getBand(b["QRG TX"]);
+        });
+
+        const list = document.querySelector("section.relais.list ul");
+        relais.forEach(function(el, index) {
+            if (el.status != "qrv") {
+                return;
+            }
+            const repeater = document.createElement("li");
+            addSpan(repeater, "title", el.qthName);
+            addSpan(repeater, "band", formatBand(getBand(el.qrgTx)));
+            addSpan(repeater, "locator", el.qthLocator);
+            addSpan(repeater, "locator2", hb9akm.geo.lonLat2Locator([
+                el.longitude,
+                el.latitude
+            ]));
+            addSpan(repeater, "distance", "&#8960; " + el.distance + "km");
+            addSpan(
+                repeater,
+                "freq",
+                "TX&#402;: " + el.qrgTx + " MHz<br>" +
+                "&Delta;RX&#402;: " + (el.qrgTx - el.qrgRx).toFixed(2) + " MHz"
+            );
+            addSpan(repeater, "remarks", el.remarks);
+            list.append(repeater);
         });
     }
 }
