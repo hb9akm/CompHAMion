@@ -4,6 +4,15 @@ hb9akm.geo = {
     },
     _init: true,
     currentLonLat: [37.41, 8.82],
+    _currentLocationChangeListeners: [],
+    registerCurrentLocationChangeListener: function(listener) {
+        hb9akm.geo._currentLocationChangeListeners.push(listener);
+    },
+    _triggerCurrentLocationChange: function() {
+        hb9akm.geo._currentLocationChangeListeners.forEach(function(el, index) {
+            el(hb9akm.geo.currentLonLat);
+        });
+    },
     getCurrentLonLat(callback, noCache) {
         console.log("get current location");
         if (!navigator.geolocation) {
@@ -91,6 +100,55 @@ hb9akm.geo = {
             lon,
             lat
         ]
+    },
+    isMaidenhead: function(location) {
+        const regex = /^[a-z]{2}[0-9]{2}(?:[a-z]{2}(?:[0-9]{2}(?:[a-z]{2})?)?)?$/i;
+        return regex.test(location);
+    },
+    isCoordinates: function(location) {
+        const regex = /^[0-9]+\.[0-9]+[,;\/][0-9]+\.[0-9]+/;
+        return regex.test(location);
+    },
+    changeToFuzzyFind: function(location) {
+        if (hb9akm.geo.isCoordinates(location)) {
+            const loc = location.split(',');
+            hb9akm.geo.currentLonLat = [
+                +(loc[0]),
+                +(loc[1])
+            ];
+            hb9akm.geo._triggerCurrentLocationChange();
+            return;
+        }
+        if (hb9akm.geo.isMaidenhead(location)) {
+            hb9akm.geo.currentLonLat = hb9akm.geo.locator2lonLat(location);
+            hb9akm.geo._triggerCurrentLocationChange();
+            return;
+        }
+        hb9akm.ajax.get(
+            "https://nominatim.openstreetmap.org/search?format=json&q=" + location,
+            function(xhr) {
+                const res = JSON.parse(xhr.responseText);
+                if (res.length == 0) {
+                    hb9akm.messages.error("Could not find location");
+                    return;
+                }
+                hb9akm.geo.currentLonLat = [
+                    +(res[0].lon),
+                    +(res[0].lat)
+                ];
+                hb9akm.geo._triggerCurrentLocationChange();
+            },
+            function(xhr) {
+                hb9akm.messages.error("Could not find location");
+            }
+        );
+    },
+    changeToLonLat: function(lonLat) {
+        hb9akm.geo.currentLonLat = [
+            +(lonLat[0]),
+            +(lonLat[1])
+        ];
+        hb9akm.geo._triggerCurrentLocationChange();
     }
 }
 
