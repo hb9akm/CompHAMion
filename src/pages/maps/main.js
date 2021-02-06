@@ -61,6 +61,9 @@ hb9akm.pages.maps =  {
 
         var relaisPositions = []
         hb9akm.pages.maps.relais.forEach(function(el) {
+            if (el.status != "qrv") {
+                return;
+            }
             relaisPositions.push(new ol.Feature({
                 geometry: new ol.geom.Point(ol.proj.fromLonLat([
                     el.longitude,
