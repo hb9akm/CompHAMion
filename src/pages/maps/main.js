@@ -12,20 +12,20 @@ hb9akm.pages.maps =  {
                     "https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js",
                     function() {
                         hb9akm.geo.getCurrentLonLat(function(coords) {
-                            hb9akm.pages.maps.loc = coords;
-                            hb9akm.pages.maps.init();
+                            hb9akm.ajax.get(
+                                "https://api.hb9akm.ch/v1/repeater",
+                                function(xhr) {
+                                    hb9akm.pages.maps.relais = JSON.parse(xhr.responseText);
+                                    hb9akm.pages.maps.loc = coords;
+                                    hb9akm.pages.maps.init();
+                                },
+                                function(xhr) {
+                                    hb9akm.messages.error(xhr.status);
+                                }
+                            );
                         });
                     }
                 )
-            }
-        );
-        hb9akm.ajax.get(
-            "https://api.hb9akm.ch/v1/repeater",
-            function(xhr) {
-                hb9akm.pages.maps.relais = JSON.parse(xhr.responseText);
-            },
-            function(xhr) {
-                hb9akm.messages.error(xhr.status);
             }
         );
         hb9akm.geo.registerCurrentLocationChangeListener(function(currentLocation) {
