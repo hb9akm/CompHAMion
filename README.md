@@ -21,14 +21,14 @@ and a repeater. See [api.hb9akm.ch issue #2](https://github.com/hb9akm/api/issue
 # Contribute
 Contributions are encouraged. There are different ways to contribute:
 * Contribute to [api.hb9akm.ch](https://github.com/hb9akm/api)
-* [Report an issue](https://github.com/hb9akm/CompHAMion/issues)
+* Report an issue
 * Create a pull-request. In this case please create an issue first!
 
 # How to use it
 There are several methods to use this app:
 * Use the provided installation at [app.hb9akm.ch](https://app.hb9akm.ch/)
 * Copy this repository's /src folder to any webserver
-* Use docker. Example command to run in /src directory: docker run -d --rm --name=comphamion -p8088:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd
+* Use docker. Example command: docker run -d --rm --name=comphamion -p8088:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd
 
 # Technical infos
 * Dependencies are kept as low as possible. The [VanillaJS](http://vanilla-js.com/) framework is used.
