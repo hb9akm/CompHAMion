@@ -1,3 +1,11 @@
 section.about {
     text-align: center;
+    padding: 20px;
+}
+section.about h1 {
+    font-size: 2em;
+}
+section.about div {
+    display: inline-block;
+    text-align: left;
 }
