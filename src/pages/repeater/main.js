@@ -140,11 +140,11 @@ hb9akm.pages.repeater = {
             const repeater = document.createElement("li");
             addSpan(repeater, "title", el.qthName);
             addSpan(repeater, "band", formatBand(getBand(el.qrgTx)));
-            addSpan(repeater, "locator", el.qthLocator);
-            addSpan(repeater, "locator2", hb9akm.geo.lonLat2Locator([
+            addSpan(repeater, "locator", hb9akm.geo.lonLat2Locator([
                 el.longitude,
                 el.latitude
             ]));
+            addSpan(repeater, "locator2", el.country);
             addSpan(repeater, "distance", "&#8960; " + el.distance + "km");
             addSpan(
                 repeater,
