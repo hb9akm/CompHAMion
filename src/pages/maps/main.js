@@ -97,7 +97,7 @@ hb9akm.pages.maps =  {
                 }
             );
             if (features.length) {
-                document.querySelectorAll(".repeater:not(.template)").forEach(function(el) {
+                document.querySelectorAll(".maps.popup .repeater:not(.template)").forEach(function(el) {
                     el.parentNode.removeChild(el);
                 });
                 var geometry = features[0].getGeometry();
