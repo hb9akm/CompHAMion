@@ -42,7 +42,45 @@ hb9akm.pages.repeater = {
                 function(xhr) {
                     hb9akm.pages.repeater.repeater = JSON.parse(xhr.responseText);
 
-                    document.querySelectorAll("section.repeater.filter input").forEach(function(el, index) {
+                    hb9akm.filter.add({
+                        name: "voice-repeater",
+                        label: "Voice Repeater",
+                        sections: [
+                            {
+                                name: "bands",
+                                label: "Bands",
+                                type: "checkbox",
+                                values: {
+                                    "23cm": "23cm",
+                                    "70cm": "70cm",
+                                    "2m": "2m",
+                                    "5m": "5m",
+                                    "10m": "10m",
+                                }
+                            },
+                            {
+                                name: "modes",
+                                label: "Modes",
+                                type: "checkbox",
+                                values: {
+                                    "FM": "FM",
+                                    "NFM": "NFM",
+                                    "EL": "EchoLink",
+                                    "C4FM": "C4FM",
+                                    "D-STAR": "D-STAR",
+                                    "DMR": "DMR",
+                                    "NXDN": "NXDN",
+                                    "DPMR": "DPMR",
+                                    "APCO-25": "APCO-25",
+                                }
+                            }
+                        ]
+                    });
+                    hb9akm.filter.registerCallback("voice-repeater", function(el) {
+                        hb9akm.pages.repeater.refreshTable();
+                    });
+
+                    document.querySelectorAll("section.filter .repeater input").forEach(function(el, index) {
                         el.addEventListener("change", function() {
                             hb9akm.pages.repeater.refreshTable();
                         });
@@ -99,35 +137,21 @@ hb9akm.pages.repeater = {
         });
 
         // filter
-        var selectedModes = [];
-        document.querySelectorAll('section.repeater.filter input.mode').forEach(function(el) {
-            if (!el.checked) {
-                return;
-            }
-            selectedModes.push(el.id.substr(5).toUpperCase());
-        });
-        var selectedTypes = [];
-        document.querySelectorAll('section.repeater.filter input.typ').forEach(function(el) {
-            if (!el.checked) {
-                return;
-            }
-            selectedTypes.push(el.id.substr(5).toLowerCase());
-        });
+        var selectedModes = hb9akm.filter.getFilterSectionStatus("voice-repeater", "modes");
+        var selectedTypes = hb9akm.filter.getFilterSectionStatus("voice-repeater", "bands");
         repeater = repeater.filter(function(el) {
             var found = false;
             if (el.status != "qrv") {
                 return false;
             }
             el.modes.every(function(mode) {
-                if (selectedModes.indexOf(mode.type) != -1) {
+                if (selectedModes[mode.type]) {
                     found = true;
                     return false;
                 }
                 return true;
             });
-            return found && selectedTypes.indexOf(el.type) != -1 && document.querySelector(
-                'section.repeater.filter input[id="band_' + formatBand(getBand(el.qrgTx)) + '"]:checked'
-            );
+            return found && selectedTypes[formatBand(getBand(el.qrgTx))];
         });
 
         // sort by distance

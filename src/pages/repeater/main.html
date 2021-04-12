@@ -1,24 +1,8 @@
 <section class="repeater search">
     <input type="text" placeholder="Dein Standort" name="location" />
 </section>
-<section class="repeater filter">
-    <input type="checkbox" id="band_23cm" class="band" checked="checked" /><label for="band_23cm">23cm</label>
-    <input type="checkbox" id="band_70cm" class="band" checked="checked" /><label for="band_70cm">70cm</label>
-    <input type="checkbox" id="band_2m" class="band" checked="checked" /><label for="band_2m">2m</label>
-    <input type="checkbox" id="band_5m" class="band" checked="checked" /><label for="band_5m">5m</label>
-    <input type="checkbox" id="band_10m" class="band" checked="checked" /><label for="band_10m">10m</label><br>
-    <input type="checkbox" id="mode_fm" class="mode" checked="checked" /><label for="mode_fm">FM</label>
-    <input type="checkbox" id="mode_nfm" class="mode" checked="checked" /><label for="mode_nfm">NFM</label>
-    <input type="checkbox" id="mode_el" class="mode" checked="checked" /><label for="mode_el">EchoLink</label>
-    <input type="checkbox" id="mode_c4fm" class="mode" checked="checked" /><label for="mode_c4fm">C4FM</label>
-    <input type="checkbox" id="mode_d-star" class="mode" checked="checked" /><label for="mode_d-star">D-STAR</label>
-    <input type="checkbox" id="mode_dmr" class="mode" checked="checked" /><label for="mode_dmr">DMR</label>
-    <input type="checkbox" id="mode_nxdn" class="mode" checked="checked" /><label for="mode_nxdn">NXDN</label>
-    <input type="checkbox" id="mode_dpmr" class="mode" checked="checked" /><label for="mode_dpmr">DPMR</label>
-    <input type="checkbox" id="mode_apco-25" class="mode" checked="checked" /><label for="mode_apco-25">APCO-25</label><br />
-    <input type="checkbox" id="type_voice" class="typ" checked="checked" /><label for="type_voice">Voice</label>
-</section>
 <section class="repeater list">
+    <hb9akm-filter page="repeater" filters="repeater-voice"></hb9akm-filter>
     <ul>
     </ul>
 </section>
