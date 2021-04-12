@@ -29,7 +29,6 @@ hb9akm.pages.repeater = {
         if (initial) {
             hb9akm.geo.registerCurrentLocationChangeListener(function(currentLocation) {
                 document.querySelector("section.repeater.search input").value = hb9akm.geo.lonLat2Locator(currentLocation);
-                document.querySelector("section.repeater.list ul").innerHTML = "";
                 hb9akm.pages.repeater.refreshTable();
             });
             document.querySelector("section.repeater.search input").addEventListener("keyup", function(ev) {
@@ -45,7 +44,6 @@ hb9akm.pages.repeater = {
 
                     document.querySelectorAll("section.repeater.filter input").forEach(function(el, index) {
                         el.addEventListener("change", function() {
-                            document.querySelector("section.repeater.list ul").innerHTML = "";
                             hb9akm.pages.repeater.refreshTable();
                         });
                     });
@@ -78,6 +76,8 @@ hb9akm.pages.repeater = {
         return d.toFixed(1);
     },
     refreshTable: function() {
+        document.querySelector("section.repeater.list ul").innerHTML = "";
+
         var repeater = hb9akm.pages.repeater.repeater;
 
         const currentLonLat = hb9akm.geo.currentLonLat;
