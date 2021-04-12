@@ -1,3 +1,22 @@
+function getBand(f) {
+    var band = Math.floor(300 / f);
+    if (band == 0) {
+        band = Math.floor(3000 / f * 10);
+        if (band > 60 && band < 71) {
+            band = 70;
+        }
+        return band / 100;
+    } else {
+        return band;
+    }
+}
+function formatBand(band) {
+    if (band > 1) {
+        return band + "m";
+    } else {
+        return band * 100 + "cm";
+    }
+}
 hb9akm.pages.maps =  {
     load: function(initial) {
         if (!initial) {
@@ -16,6 +35,40 @@ hb9akm.pages.maps =  {
                                 "https://api.hb9akm.ch/v1/repeater",
                                 function(xhr) {
                                     hb9akm.pages.maps.repeater = JSON.parse(xhr.responseText);
+                                    hb9akm.filter.add({
+                                        name: "voice-repeater",
+                                        label: "Voice Repeater",
+                                        sections: [
+                                            {
+                                                name: "bands",
+                                                label: "Bands",
+                                                type: "checkbox",
+                                                values: {
+                                                    "23cm": "23cm",
+                                                    "70cm": "70cm",
+                                                    "2m": "2m",
+                                                    "5m": "5m",
+                                                    "10m": "10m",
+                                                }
+                                            },
+                                            {
+                                                name: "modes",
+                                                label: "Modes",
+                                                type: "checkbox",
+                                                values: {
+                                                    "FM": "FM",
+                                                    "NFM": "NFM",
+                                                    "EL": "EchoLink",
+                                                    "C4FM": "C4FM",
+                                                    "D-STAR": "D-STAR",
+                                                    "DMR": "DMR",
+                                                    "NXDN": "NXDN",
+                                                    "DPMR": "DPMR",
+                                                    "APCO-25": "APCO-25",
+                                                }
+                                            }
+                                        ]
+                                    });
                                     hb9akm.pages.maps.loc = coords;
                                     hb9akm.pages.maps.init();
                                 },
@@ -42,6 +95,32 @@ hb9akm.pages.maps =  {
             }
             hb9akm.geo.changeToFuzzyFind(ev.target.value);
         });
+        hb9akm.filter.registerCallback("voice-repeater", hb9akm.pages.maps._updateFilters);
+    },
+    _updateFilters: function() {
+        var selectedModes = hb9akm.filter.getFilterSectionStatus("voice-repeater", "modes");
+        var selectedTypes = hb9akm.filter.getFilterSectionStatus("voice-repeater", "bands");
+        hb9akm.pages.maps.repeater.forEach(function(el, idx) {
+            if (el.status != "qrv") {
+                return;
+            }
+            var found = false;
+            el.modes.every(function(mode) {
+                if (selectedModes[mode.type]) {
+                    found = true;
+                    return false;
+                }
+                return true;
+            });
+            if (found && !selectedTypes[formatBand(getBand(el.qrgTx))]) {
+                found = false;
+            }
+            if (found) {
+                hb9akm.pages.maps.repeaterFeature[idx].setStyle();
+            } else {
+                hb9akm.pages.maps.repeaterFeature[idx].setStyle(new ol.style.Style({}));
+            }
+        });
     },
     init: function() {
         hb9akm.pages.maps.mapview = new ol.View({
@@ -60,18 +139,21 @@ hb9akm.pages.maps =  {
 
 
         var repeaterPositions = []
+        hb9akm.pages.maps.repeaterFeature = {};
         hb9akm.pages.maps.repeater.forEach(function(el, idx) {
             if (el.status != "qrv") {
                 return;
             }
-            repeaterPositions.push(new ol.Feature({
+            const feature = new ol.Feature({
                 geometry: new ol.geom.Point(ol.proj.fromLonLat([
                     el.longitude,
                     el.latitude
                 ])),
                 name: el.qthName,
                 id: idx
-            }));
+            });
+            hb9akm.pages.maps.repeaterFeature[idx] = feature;
+            repeaterPositions.push(feature);
         });
         const layer = new ol.layer.Vector({
             source: new ol.source.Vector({
@@ -79,6 +161,7 @@ hb9akm.pages.maps =  {
             })
         });
         hb9akm.pages.maps.map.addLayer(layer);
+        hb9akm.pages.maps._updateFilters();
 
         const popup_el = document.querySelector("div.maps.popup");
         var popup = new ol.Overlay({
@@ -93,7 +176,6 @@ hb9akm.pages.maps =  {
                 ev.pixel,
                 function(feature, layer) {
                     features.push(feature);
-                    //return feature;
                 }
             );
             if (features.length) {
