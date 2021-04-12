@@ -115,6 +115,9 @@ hb9akm.pages.repeater = {
         });
         repeater = repeater.filter(function(el) {
             var found = false;
+            if (el.status != "qrv") {
+                return false;
+            }
             el.modes.every(function(mode) {
                 if (selectedModes.indexOf(mode.type) != -1) {
                     found = true;
@@ -134,9 +137,6 @@ hb9akm.pages.repeater = {
 
         const list = document.querySelector("section.repeater.list ul");
         repeater.forEach(function(el, index) {
-            if (el.status != "qrv") {
-                return;
-            }
             const repeater = document.createElement("li");
             addSpan(
                 repeater,
