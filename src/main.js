@@ -1,14 +1,41 @@
 // Modules!
 var hb9akm = {
     module: {
+        _loadTemplate: function(name, callback) {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "modules/" + name + "/main.html");
+            xhr.send(null);
+
+            xhr.onreadystatechange = function() {
+                // readyState 4 means the request is done.
+                const XHR_DONE = 4;
+                const HTTP_OK = 200;
+                if (xhr.readyState === XHR_DONE) {
+                    if (xhr.status === HTTP_OK) {
+                        document.querySelector("#content").insertAdjacentHTML(
+                            "afterend",
+                            xhr.responseText
+                        );
+                        callback();
+                    }
+                }
+            };
+        },
         _loadScript: function(name, callback) {
             const script = document.createElement("script");
             script.src = "modules/" + name + "/main.js";
             const internalCallback = function() {
-                if (hb9akm[name]._onload != undefined) {
-                    hb9akm[name]._onload();
+                const onFinish = function() {
+                    if (hb9akm[name]._onload != undefined) {
+                        hb9akm[name]._onload();
+                    }
+                    callback();
                 }
-                callback();
+                if (hb9akm[name]._hasHTML) {
+                    hb9akm.module._loadTemplate(name, onFinish);
+                } else {
+                    onFinish();
+                }
             };
             script.onreadystatechange = internalCallback;
             script.onload = internalCallback;
