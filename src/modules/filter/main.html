@@ -1,0 +1,37 @@
+<template id="hb9akm-filter-element">
+    <style>
+        section.filter {
+            padding: 10px;
+        }
+        section.filter>legend:before {
+            content: "v ";
+        }
+        section.filter.collapsed>legend:before {
+            content: "> ";
+        }
+        section.filter.collapsed>div {
+            display: none;
+        }
+        section.filter fieldset {
+            margin: 10px;
+        }
+    </style>
+    <section class="filter">
+        <legend><a href="#">Filter</a></legend>
+        <div>
+        </div>
+    </section>
+</template>
+<template id="hb9akm-filter-element-filter">
+            <fieldset>
+                <legend>
+                    <input type="checkbox" class="filter-section" checked="checked" /><label></label>
+                </legend>
+            </fieldset>
+</template>
+<template id="hb9akm-filter-element-filter-section">
+                <div class="filter-section">
+                    <span class="filter-section-label"></span>
+                </div>
+</template>
+
