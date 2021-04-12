@@ -138,19 +138,30 @@ hb9akm.pages.repeater = {
                 return;
             }
             const repeater = document.createElement("li");
-            addSpan(repeater, "title", el.qthName);
-            addSpan(repeater, "band", formatBand(getBand(el.qrgTx)));
-            addSpan(repeater, "locator", hb9akm.geo.lonLat2Locator([
-                el.longitude,
-                el.latitude
-            ]));
-            addSpan(repeater, "locator2", el.country);
-            addSpan(repeater, "distance", "&#8960; " + el.distance + "km");
+            addSpan(
+                repeater,
+                "title",
+                el.qthName + "<br>" +
+                    formatBand(getBand(el.qrgTx))
+            );
+            addSpan(
+                repeater,
+                "locator",
+                hb9akm.geo.lonLat2Locator([
+                    el.longitude,
+                    el.latitude
+                ]) + "<br>" +
+                    el.country + "<br>" +
+                    "&#8960; " + el.distance + "km"
+            );
+            //addSpan(repeater, "locator2", el.country);
+            //addSpan(repeater, "distance", "&#8960; " + el.distance + "km");
             addSpan(
                 repeater,
                 "freq",
                 "TX&#402;: " + el.qrgTx + " MHz<br>" +
-                "<span title=\"" + el.qrgRx + "MHz\">&Delta;RX&#402;: " + (el.qrgTx - el.qrgRx).toFixed(2) + " MHz</span>"
+                    "RX&#402;: " + el.qrgRx + " MHz<br>" +
+                    "&Delta;&#402;: " + (el.qrgRx - el.qrgTx).toFixed(2) + " MHz"
             );
             addSpan(repeater, "remarks", el.remarks);
             list.append(repeater);

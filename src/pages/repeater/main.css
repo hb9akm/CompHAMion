@@ -71,4 +71,12 @@ section.repeater.list ul li>span.title {
         display: inline-block;
         border-width: 0;
     }
+    section.repeater.list ul li>span:first-child {
+        display: block;
+    }
+    section.repeater.list ul li>span:first-child br {
+        display: inline-block;
+        content: "";
+        width: 1em;
+    }
 }
