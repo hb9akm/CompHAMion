@@ -160,7 +160,14 @@ hb9akm.pages.repeater = {
         });
 
         const list = document.querySelector("section.repeater.list ul");
+        var i = 0;
         repeater.forEach(function(el, index) {
+            // TODO: This is temporary and needs to be replaced by infinite scrolling
+            if (i > 200) {
+                // TODO: actually break the loop
+                return;
+            }
+            i++;
             const repeater = document.createElement("li");
             addSpan(
                 repeater,
